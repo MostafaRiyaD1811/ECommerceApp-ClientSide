@@ -1,4 +1,4 @@
-import {Category}from 'src/app/shared/models/category'
+import {ICategory}from 'src/app/shared/models/category'
 export interface IProduct {
     id: string;
     name: string;
@@ -6,5 +6,5 @@ export interface IProduct {
     price: number;
     manufacturer: string;
     pictureUrl: string;
-    category: Category;
+    category: ICategory;
 }

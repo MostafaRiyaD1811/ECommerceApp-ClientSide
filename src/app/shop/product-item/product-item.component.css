@@ -1,0 +1,10 @@
+.btn-group{
+    width:100%;
+}
+button{
+    width: 50%;
+    display: inline;
+}
+h6,span,img{
+    padding:0px 15px 0px 15px;
+}
