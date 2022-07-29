@@ -2,7 +2,7 @@ import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from '../shared/models/category';
 import { IProduct } from '../shared/models/product';
-import { ShopParams } from '../shared/models/shopParams';
+import { ShopParams } from '../shared/models/ShopParams';
 import { ShopService } from './shop.service';
 
 @Component({
@@ -37,14 +37,14 @@ export class ShopComponent implements OnInit {
   this.shopService.getProducts(this.shopParams.categoryNameSelected)
     .subscribe(response => {
       this.products=response;
-      this.shopParams.pa
+      console.log(this.products);
     },error=>{console.log(error);})
   }
   getProductsSorted(){
     this.shopService.getProductsSorted(this.shopParams.sortSelected)
       .subscribe(response => {
         this.products=response;
-        console.log(response)
+        // console.log(response)
       },error=>{console.log(error);})
     }
   getCategories(){
