@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ShopComponent} from 'src/app/shop/shop.component'
 
 @Component({
   selector: 'app-nav-bar',

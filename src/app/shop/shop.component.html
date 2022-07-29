@@ -12,27 +12,45 @@
             <h5 class=" text-warning ml-3">Categories</h5>
             <ul class="list-group">
                 <li class="list-group-item " *ngFor="let category of categories"
-                    [class.active]="category.categoryName === this.shopParams.categoryNameSelected"
-                    [value]="category.categoryName" (click)="onCategorySelected(category.categoryName)">
+                    [class.active]="category.categoryName === this.shopParams.catName" [value]="category.categoryName"
+                    (click)="onCategorySelected(category.categoryName)">
                     {{category.categoryName}}
-
                 </li>
-
             </ul>
-
         </section>
         <section class="col-9">
+            <div class="d-flex justify-content-center align-items-center">
+                <header class="mr-auto" *ngIf="shopParams.totalCount && shopParams.totalCount > 0">
+                    <span>Showing
+                        <strong>
+                            {{(this.shopParams.pageNum-1) * this.shopParams.size+1}} -
+                            {{this.shopParams.pageNum*this.shopParams.size
+                            >this.shopParams.totalCount
+                            ?this.shopParams.totalCount
+                            :this.shopParams.pageNum*this.shopParams.size}}
+                        </strong>
+                        of
+                        <strong> {{this.shopParams.totalCount}} </strong>
+                        Results</span>
+                </header>
+                <span *ngIf="shopParams.totalCount === 0">Sorry,There are no products Available</span>
+                <div class="form-inline my-2 my-lg-0 ml-auto">
+                    <input class="form-control mr-sm-2" #search type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0 mx-2" (click)="onSearch()">Search</button>
+                    <button class="btn btn-outline-danger my-2 my-sm-0 mx-2" (click)="onReset()">Reset</button>
+                </div>
+            </div>
             <div class="row">
-                <div class="col-4" *ngFor="let item of products">
+                <div class="col-4 my-4" *ngFor="let item of products">
                     <app-product-item [product]="item"></app-product-item>
                 </div>
 
 
             </div>
-            <div class=" d-flex justify-content-center">
-                <pagination [boundaryLinks]="true" [totalItems]="77" previousText="&lsaquo;" nextText="&rsaquo;"
-                    firstText="&laquo;" lastText="&raquo;">
-
+            <div class=" d-flex justify-content-center" *ngIf="shopParams.totalCount > 0">
+                <pagination [boundaryLinks]="true" [totalItems]="this.shopParams.totalCount"
+                    (pageChanged)="onPageChanged($event)" [itemsPerPage]="this.shopParams.size" previousText="&lsaquo;"
+                    nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
                 </pagination>
             </div>
 

@@ -1,7 +1,8 @@
 export class ShopParams {
-    categoryNameSelected ="All" ;
-    sortSelected= 'name';
-    pageNumber = 1;
-    pageSize = 6;
-    search: string;
+    catName ="All" ;
+    sort= 'name';
+    pageNum = 1;
+    size = 6;
+    searchQuery='';
+    totalCount:number;
 }
