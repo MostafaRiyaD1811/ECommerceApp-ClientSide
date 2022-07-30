@@ -8,3 +8,7 @@ button{
 h6,span,img{
     padding:0px 15px 0px 15px;
 }
+.card-body{
+    padding: 1.25rem;
+    min-height: 1px;
+}
