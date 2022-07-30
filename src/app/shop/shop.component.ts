@@ -11,25 +11,19 @@ import { ShopService } from './shop.service';
 })
 export class ShopComponent implements OnInit {
   @ViewChild('search', { static: true }) searchTerm: ElementRef;
-  products: IProduct[] = [];
+  products: IProduct[];
   product:IProduct;
-  categories: ICategory[] = [];
+  categories: ICategory[];
   shopParams = new ShopParams();
-  sortOptions =
-    [
+  sortOptions = [
       { name: 'Alphabetical', value: 'name' },
       { name: 'Price:Low to High', value: 'PriceAsc' },
       { name: 'Price:High to Low', value: 'PriceDesc' }
     ]
-
-
-  constructor(private shopService: ShopService) { }
-
+  constructor(private shopService: ShopService) {}
   ngOnInit() {
-
     this.getProducts();
     this.getCategories();
-
   }
   getProducts() {
     this.shopService.getProducts(this.shopParams)
@@ -43,27 +37,16 @@ export class ShopComponent implements OnInit {
   getCategories() {
     this.shopService.getCategories()
       .subscribe(response => {
-        this.categories = [{ categoryName: 'All' }, ...response]
+        this.categories = [{categoryName: 'All' }, ...response]
       }, error => { console.log(error); })
   }
-  onCategorySelected(categorySelected: string) {
-    this.shopParams.catName = categorySelected;
-
-    this.shopService.onCategorySelected(categorySelected)
-      .subscribe(response => {
-        this.products = response.productsReturn;
-        this.shopParams.pageNum = response.pageNum;
-        this.shopParams.size = response.pageSize;
-        this.shopParams.totalCount = response.totalItemCount;
-      }, error => { console.log(error); })
-
+  onCatSelected(categoryName:string){
+    this.shopParams.catName=categoryName;
+    this.getProducts();
   }
-  onSortSelected(sort: string) {
-
-    this.shopService.onSortSelected(sort).subscribe(response => {
-      this.products = response.productsReturn;
-    }, error => { console.log(error); });
-
+  onSortSelected(sort:string){
+    this.shopParams.sort=sort;
+    this.getProducts();
   }
   onPageChanged(event: any) {
     this.shopParams.pageNum = event.page;
@@ -71,12 +54,7 @@ export class ShopComponent implements OnInit {
   }
   onSearch() {
     this.shopParams.searchQuery = this.searchTerm.nativeElement.value;
-    this.shopService.onSearch(this.shopParams.searchQuery).subscribe(response => {
-      this.products = response.productsReturn;
-      this.shopParams.pageNum = response.pageNum;
-      this.shopParams.size = response.pageSize;
-      this.shopParams.totalCount = response.totalItemCount;
-    }, error => { console.log(error); });
+    this.getProducts();
   }
   onReset() {
     this.searchTerm.nativeElement.value = '';

@@ -13,7 +13,7 @@
             <ul class="list-group">
                 <li class="list-group-item " *ngFor="let category of categories"
                     [class.active]="category.categoryName === this.shopParams.catName" [value]="category.categoryName"
-                    (click)="onCategorySelected(category.categoryName)">
+                    (click)="onCatSelected(category.categoryName)">
                     {{category.categoryName}}
                 </li>
             </ul>

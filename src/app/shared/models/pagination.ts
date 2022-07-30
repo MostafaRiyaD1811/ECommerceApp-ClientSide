@@ -1,9 +1,12 @@
 import { IProduct } from "./product";
 
 export interface IPagination {
-    pageIndex: number;
+    pageNum: number;
     pageSize: number;
-    count: number;
-    data: IProduct[];
+    totalItemCount: number;
+    categoryName: string;
+    sort: string;
+    searchQuery: string;
+    productsReturn: IProduct[];
 }
 
