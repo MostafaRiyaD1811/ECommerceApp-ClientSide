@@ -18,9 +18,10 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link text-dark mx-3" href="#"><i class="fa fa-shopping-cart fa-2x"></i></a>
-            </li>
+            <a routerLink='/basket' class="position-relative">
+                <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"></i>
+                <div *ngIf="(basket$ | async) as basket" class="cart-no">{{basket.items.length}}</div>
+            </a>
             <li class="nav-item active">
                 <a class="nav-link btn btn-success text-white mr-3" href="#">Sign in</a>
             </li>

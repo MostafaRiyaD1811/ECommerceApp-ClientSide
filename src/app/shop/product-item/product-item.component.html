@@ -5,9 +5,9 @@
             <a [routerLink]="['/Shop/{{product.id}}']" class="row">
                 <h6 class="text-uppercase">{{product.name}}</h6>
             </a>
-            <span class="mb-2 row">{{product.price}}</span>
+            <span class="mb-2 row">{{product.price | currency}}</span>
             <div class="btn-group mt-auto">
-                <button type="button" class="btn btn-outline-secondary fa fa-shopping-cart mr-2"></button>
+                <button type="button" class="btn btn-outline-secondary fa fa-shopping-cart mr-2" (click)="addItemToBasket()"></button>
                 <button type="button" class="btn btn-outline-secondary" routerLink="/Shop/{{product.id}}">View</button>
             </div>
         </div>

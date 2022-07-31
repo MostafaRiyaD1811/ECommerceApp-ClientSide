@@ -9,6 +9,7 @@ const routes: Routes = [
   {path:'server-error',component:ServerErrComponent},
   {path:'not-found',component:NotFoundComponent},
   {path:'Shop',loadChildren:()=> import('src/app/shop/shop.module').then(mod=>mod.ShopModule)},
+  {path:'basket',loadChildren:()=> import('src/app/basket/basket.module').then(mod=>mod.BasketModule)},
   {path:'**',redirectTo:'',pathMatch:'full'}
 ];
 
