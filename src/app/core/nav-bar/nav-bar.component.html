@@ -21,12 +21,37 @@
             <li class="nav-item active">
                 <a class="nav-link text-dark mx-3" href="#"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link btn btn-success text-white mr-3" href="#">Sign in</a>
+            <ng-container *ngIf="(currentUser$ | async)===null">
+              <li class="nav-item active">
+                <a routerLink="/account/login"  class="nav-link btn btn-success text-white mr-3" href="#">Login</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link btn btn-primary text-white ml-3" href="#">Sign up</a>
+                <a routerLink="/account/register" class="nav-link btn btn-primary text-white ml-3" href="#">Sign up</a>
             </li>
+            </ng-container>
+
+            <ng-container *ngIf="(currentUser$ | async)">
+              <li class="dropdown ml-3 mr-5" dropdown>
+                <a class="dropdown-toggle" style="cursor: pointer;" dropdownToggle>
+                  <strong>Welcome {{(currentUser$ | async).userName}}</strong>
+                </a>
+
+            <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+            <a href="/basket" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-shopping-cart mr-3"></i> View Basket
+            </a>
+
+            <a href="/orders" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-history mr-3"></i> View Orders
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="" class="dropdown-item d-flex align-items-center py-2" (click)="logOut()">
+              <i class="fa fa-sign-out mr-3"></i> Logout
+            </a>
+            </div>
+          </li>
+            </ng-container>
+
         </ul>
     </div>
 </nav>

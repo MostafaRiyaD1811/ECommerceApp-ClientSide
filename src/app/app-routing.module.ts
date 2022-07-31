@@ -8,8 +8,9 @@ const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'server-error',component:ServerErrComponent},
   {path:'not-found',component:NotFoundComponent},
-  {path:'Shop',loadChildren:()=> import('src/app/shop/shop.module').then(mod=>mod.ShopModule)},
-  {path:'**',redirectTo:'',pathMatch:'full'}
+  {path:'shop',loadChildren:()=> import('src/app/shop/shop.module').then(mod=>mod.ShopModule)},
+  {path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule)},
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
