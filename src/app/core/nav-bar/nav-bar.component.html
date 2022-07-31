@@ -18,12 +18,21 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
+<<<<<<< HEAD
             <li class="nav-item active">
                 <a class="nav-link text-dark mx-3" href="#"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </li>
             <ng-container *ngIf="(currentUser$ | async)===null">
               <li class="nav-item active">
                 <a routerLink="/account/login"  class="nav-link btn btn-success text-white mr-3" href="#">Login</a>
+=======
+            <a routerLink='/basket' class="position-relative">
+                <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"></i>
+                <div *ngIf="(basket$ | async) as basket" class="cart-no">{{basket.items.length}}</div>
+            </a>
+            <li class="nav-item active">
+                <a class="nav-link btn btn-success text-white mr-3" href="#">Sign in</a>
+>>>>>>> 2876b535df5dd24b11b16e11746efb422b573a9b
             </li>
             <li class="nav-item active">
                 <a routerLink="/account/register" class="nav-link btn btn-primary text-white ml-3" href="#">Sign up</a>
