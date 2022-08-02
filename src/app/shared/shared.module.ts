@@ -5,16 +5,16 @@ import { OderTotalsComponent } from './Components/oder-totals/oder-totals.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CdkStepperModule } from '@angular/cdk/stepper';
-import { StepperComponent } from './Components/stepper/stepper.component'
-import { TextInputComponent } from './Components/text-input/text-input.component';
+// import { StepperComponent } from './Components/'
+// import { TextInputComponent } from './Components/text-input/text-input.component';
 
 
 
 @NgModule({
   declarations: [
     OderTotalsComponent,
-    StepperComponent,
-    TextInputComponent
+    // StepperComponent,
+    // TextInputComponent
   ],
   imports: [
     CommonModule,
@@ -29,8 +29,9 @@ import { TextInputComponent } from './Components/text-input/text-input.component
     ReactiveFormsModule,
     BsDropdownModule,
     CdkStepperModule,
-    StepperComponent,
-    TextInputComponent]
+    // StepperComponent,
+    // TextInputComponent
+  ]
 
 })
 export class SharedModule { }
