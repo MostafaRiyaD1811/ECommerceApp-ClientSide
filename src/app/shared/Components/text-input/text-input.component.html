@@ -1,0 +1,19 @@
+<div class="form-group mt-5">
+  <label class="form-control-placeholder" for="{{label}}">{{label}}</label>
+
+  <input [ngClass]="(controlDir?.control?.touched)
+            ? !controlDir.control.valid ? 'is-invalid' : 'is-valid' : null" (input)="onChange($event.target.value)"
+    (blur)="onTouched()" [type]="type" id="{{label}}" #input class="form-control" required>
+
+
+  <div class="invalid-feedback" *ngIf="(!controlDir?.control?.valid && controlDir?.control?.touched)">
+    <span *ngIf="controlDir.control.errors?.required">{{label}} is required</span>
+    <span *ngIf="controlDir.control.errors?.pattern">Invalid {{label}}</span>
+
+  </div>
+
+  <div class="invalid-feedback d-block" *ngIf="(!controlDir?.control?.valid && controlDir?.control?.dirty)">
+    <span *ngIf="controlDir.control.errors?.emailExists">Email address is already used</span>
+  </div>
+
+</div>
