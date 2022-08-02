@@ -19,8 +19,10 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError(error=>{
         if(error){
           if(error.status === 400){
-            if(error.error.errors){
-              throw error.error;
+            if(error.error){
+              for (let err of error.error ) {
+                this.toastr.error(err.description)
+              }
             }else{
               this.toastr.error(error.error.message,error.error.statusCode)
             }

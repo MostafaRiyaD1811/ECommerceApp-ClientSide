@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgControlStatusGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -10,10 +10,12 @@ import { AccountService } from '../account.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  returnUrl:string;
 
-  constructor(private formBuilder: FormBuilder, private accountService:AccountService , private router:Router) {}
+  constructor(private formBuilder: FormBuilder, private accountService:AccountService , private router:Router,private activatedRoute:ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.returnUrl=this.activatedRoute.snapshot.queryParams['returnUrl'] || '/shop';
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators
         .pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]],
@@ -28,8 +30,7 @@ export class LoginComponent implements OnInit {
 
     this.accountService.login(this.loginForm.value).subscribe({
       next: () => {
-        console.log('Login successeded!!');
-        this.router.navigate(['/shop']);
+        this.router.navigateByUrl(this.returnUrl);
       } ,
       error: (error) => console.log(error),
     })

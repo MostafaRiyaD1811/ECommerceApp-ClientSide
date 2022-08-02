@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, map, Observable, ObservedValueOf, of } from 'rxjs';
+import { BehaviorSubject, map, Observable, ObservedValueOf, of, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAddress } from '../shared/models/address';
 import { IUser } from '../shared/models/user';
@@ -11,21 +11,21 @@ import { IUser } from '../shared/models/user';
 })
 export class AccountService implements OnInit{
   baseUrl: string
-  private currentUserSource: BehaviorSubject<IUser>;
+  private currentUserSource: ReplaySubject<IUser>;
   CurrentUser$: Observable<IUser>;
 
     constructor(private http: HttpClient, private router: Router) {
     this.baseUrl = environment.apiurl;
-    this.currentUserSource = new BehaviorSubject<IUser>(null);
+    this.currentUserSource = new ReplaySubject<IUser>(1);
 this.CurrentUser$ =this.currentUserSource.asObservable();
   }
   ngOnInit(): void {
 
 
   }
-  getCurrentUserValue(){
-    return this.currentUserSource.value;
-  }
+  // getCurrentUserValue(){
+  //   return this.currentUserSource.value;
+  // }
   loadCurrentUser(token: string) {
     if (token == null) {
       this.currentUserSource.next(null);
