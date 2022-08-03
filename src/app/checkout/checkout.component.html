@@ -5,11 +5,11 @@
                 <cdk-step [label]="'Address'" [completed]="(checkoutForm.get('addressForm')).valid">
                     <app-checkout-address [check]="checkoutForm"></app-checkout-address>
                 </cdk-step>
-                <cdk-step [label]="'Delivery'">
+                <cdk-step [label]="'Delivery'" [completed]="(checkoutForm.get('deliveryForm')).valid">
                     <app-checkout-delivery [check]="checkoutForm"></app-checkout-delivery>
                 </cdk-step>
                 <cdk-step [label]="'Review'">
-                    <app-checkout-review></app-checkout-review>
+                    <app-checkout-review [check]="checkoutForm"></app-checkout-review>
                 </cdk-step>
             </app-stepper>
         </div>

@@ -7,18 +7,18 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
   styleUrls: ['./text-input.component.css']
 })
 export class TextInputComponent implements OnInit, ControlValueAccessor {
-  @ViewChild('input', { static: true }) input: ElementRef;
+  @ViewChild('input', {static: true}) input: ElementRef;
   @Input() type = 'text';
-  @Input() label: string;
-  constructor(@Self() public controlDir: NgControl) {
+  @Input() label = 'string';
+
+  constructor(@Self() public controlDir: NgControl) { 
     this.controlDir.valueAccessor = this;
   }
-
-
   ngOnInit(): void {
-     const control = this.controlDir.control;
+    const control = this.controlDir.control;
     const validators = control.validator ? [control.validator] : [];
     const asyncValidators = control.asyncValidator ? [control.asyncValidator] : [];
+
     control.setValidators(validators);
     control.setAsyncValidators(asyncValidators);
     control.updateValueAndValidity();
@@ -39,8 +39,4 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-
-
-
-
 }
