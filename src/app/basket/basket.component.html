@@ -3,52 +3,11 @@
         <h1 class="text-danger text-bold mt-5">Sorry your cart is empty,Please add items to cart !</h1>
     </div>
     <div *ngIf="basket$ | async as basket">
-        <table class="table table-striped text-center">
-            <thead>
-                <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Picutre</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of (basket$|async).items">
-                    <td>
-                        {{item.productName}}
-                    </td>
-                    <td>
-                        <img src="{{item.pictureUrl}}" alt="{{item.productName}}" class="img-fluid"
-                            style="max-height: 50px;">
-                    </td>
-                    <td>
-                        {{item.price | currency}}
-                    </td>
-                    <td>
-                        <i (click)="decrementItemQuentity(item)" class="fa fa-minus-circle text-warning mr-2"
-                            style="cursor: pointer; font-size: 2em;"></i>
-                        <span class="font-weight-bold" style="font-size: 1.5em;">
-                            {{item.quantity}}
-                        </span>
-                        <i (click)="incrementItemQuentity(item)" class="fa fa-plus-circle text-warning mx-2"
-                            style="cursor: pointer; font-size: 2em;"></i>
-                    </td>
-                    <td>
-                        <strong>
-                            {{item.price*item.quantity|currency}}
-                        </strong>
-                    </td>
-                    <td>
-                        <a class="text-danger">
-                            <i (click)="removeBasketItem(item)" class="fa fa-trash"
-                                style="cursor: pointer; font-size:2em;"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <app-basket-summary
+            (decrement)="decrementItemQuantity($event)"
+            (increment)="incrementItemQuantity($event)"
+            (remove)="removeBasketItem($event)"
+        ></app-basket-summary>
         <div class="row">
             <div class="col-6 offset-6">
                 <div class="d-flex align-items-center justify-content-center">

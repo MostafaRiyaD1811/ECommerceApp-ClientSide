@@ -7,6 +7,8 @@ import { TextInputComponent } from './Components/text-input/text-input.component
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { StepperComponent } from './Components/stepper/stepper.component';
 import { OderTotalsComponent } from './Components/oder-totals/oder-totals.component';
+import { BasketSummaryComponent } from './Components/basket-summary/basket-summary.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,7 +17,8 @@ import { OderTotalsComponent } from './Components/oder-totals/oder-totals.compon
   declarations: [
     TextInputComponent,
     StepperComponent,
-    OderTotalsComponent
+    OderTotalsComponent,
+    BasketSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +27,7 @@ import { OderTotalsComponent } from './Components/oder-totals/oder-totals.compon
     BsDropdownModule.forRoot(),
     CdkStepperModule,
     FormsModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
@@ -34,7 +38,8 @@ import { OderTotalsComponent } from './Components/oder-totals/oder-totals.compon
     CdkStepperModule,
     StepperComponent,
     OderTotalsComponent,
-    FormsModule
+    FormsModule,
+    BasketSummaryComponent
   ]
 })
 export class SharedModule { }

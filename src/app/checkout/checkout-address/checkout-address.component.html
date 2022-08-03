@@ -10,14 +10,6 @@
         <app-text-input [label]="'Zip code'" formControlName="zipCode"></app-text-input>
     </form>
 </div> -->
-<!-- <div class="float-none d-flex justify-content-between flex-column flex-lg-row mb-5">
-    <button class="btn btn-outline-primary" routerLink="/basket">
-        <i class="fa fa-angle-left"></i> Back to basket
-    </button>
-    <button [disabled]="CheckoutForm.get('addressForm').invalid" class="btn btn-primary" cdkStepperNext>
-        Go to delivery <i class="fa fa-angle-right"></i>
-    </button>
-</div -->
 <div class="d-flex justify-content-center align-items-center my-3">
     <h4>Shipping address</h4>
 </div>
@@ -52,5 +44,13 @@
 <div class="d-flex justify-content-center align-items-center my-3">
     <button class="btn btn-outline-primary">
         save as default address
+    </button>
+</div>
+<div class="float-none d-flex justify-content-between flex-column flex-lg-row mb-5">
+    <button class="btn btn-danger" routerLink="/basket">
+        <i class="fa fa-angle-left"></i> Back to basket
+    </button>
+    <button class="btn btn-success" cdkStepperNext>
+        Go to delivery <i class="fa fa-angle-right"></i>
     </button>
 </div>
