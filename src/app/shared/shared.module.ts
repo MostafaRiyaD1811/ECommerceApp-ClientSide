@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TextInputComponent } from './Components/text-input/text-input.component';
 import { CdkStepperModule } from '@angular/cdk/stepper';
@@ -23,6 +23,7 @@ import { OderTotalsComponent } from './Components/oder-totals/oder-totals.compon
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     CdkStepperModule,
+    FormsModule,
   ],
   exports: [
     CommonModule,
@@ -32,10 +33,8 @@ import { OderTotalsComponent } from './Components/oder-totals/oder-totals.compon
     TextInputComponent,
     CdkStepperModule,
     StepperComponent,
-    OderTotalsComponent
-
+    OderTotalsComponent,
+    FormsModule
   ]
-
-  
 })
 export class SharedModule { }

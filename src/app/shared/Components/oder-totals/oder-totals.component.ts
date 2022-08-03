@@ -15,7 +15,6 @@ export class OderTotalsComponent implements OnInit {
 
   ngOnInit() {
     this.basketTotal$=this.basketService.basketTotal$;
-
   }
 
 }

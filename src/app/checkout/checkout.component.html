@@ -1,4 +1,18 @@
 <div class="container mt-5">
-    <h1>only authorised user shoud be able to see this</h1>
+    <div class="row">
+        <div class="col-8">
+            <app-stepper [linearModeSelected]="false" #appStepper>
+                <cdk-step [label]="'Address'">
+                    <app-checkout-address [check]="checkoutForm"></app-checkout-address>
+                </cdk-step>
+                <cdk-step [label]="'Delivery'" [completed]="(checkoutForm.get('deliveryForm')).valid">
+                </cdk-step>
+                <cdk-step [label]="'Review'">
+                </cdk-step>
+            </app-stepper>
+        </div>
+        <div class="col-4">
+            <app-oder-totals></app-oder-totals>
+        </div>
+    </div>
 </div>
-

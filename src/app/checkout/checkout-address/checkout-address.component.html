@@ -1,0 +1,56 @@
+<!-- <div class="mt-4">
+
+    
+    <form [formGroup]="check">
+        <app-text-input [label]="'First name'" formControlName="firstName"></app-text-input>
+        <app-text-input [label]="'Last name'" formControlName="lastName"></app-text-input>
+        <app-text-input [label]="'Street'" formControlName="street"></app-text-input>
+        <app-text-input [label]="'City'" formControlName="city"></app-text-input>
+        <app-text-input [label]="'State'" formControlName="state"></app-text-input>
+        <app-text-input [label]="'Zip code'" formControlName="zipCode"></app-text-input>
+    </form>
+</div> -->
+<!-- <div class="float-none d-flex justify-content-between flex-column flex-lg-row mb-5">
+    <button class="btn btn-outline-primary" routerLink="/basket">
+        <i class="fa fa-angle-left"></i> Back to basket
+    </button>
+    <button [disabled]="CheckoutForm.get('addressForm').invalid" class="btn btn-primary" cdkStepperNext>
+        Go to delivery <i class="fa fa-angle-right"></i>
+    </button>
+</div -->
+<div class="d-flex justify-content-center align-items-center my-3">
+    <h4>Shipping address</h4>
+</div>
+<form>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">First Name</label>
+        <input type="text" class="form-control" id="FnameInput" placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Last Name</label>
+        <input type="text" class="form-control" id="LnameInput" placeholder="Last Name">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Street</label>
+        <input type="text" class="form-control" id="StreetInput" placeholder="11 Example St">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">City</label>
+        <select class="form-control" id="CityInput">
+            <option>Suez</option>
+            <option>Cairo</option>
+            <option>Ismailia</option>
+            <option>Alexandria</option>
+            <option>Minya</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="zip">Zip Code</label>
+        <input id="zip" type="number" inputmode="numeric" pattern="^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$" class="form-control">
+    </div>
+</form>
+<div class="d-flex justify-content-center align-items-center my-3">
+    <button class="btn btn-outline-primary">
+        save as default address
+    </button>
+</div>
