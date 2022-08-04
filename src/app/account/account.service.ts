@@ -83,8 +83,8 @@ this.CurrentUser$ =this.currentUserSource.asObservable();
     return this.http.get<IAddress>(`${this.baseUrl}account/address`);
   }
 
-  updateUserAddress(address: IAddress): Observable<IAddress> {
-    return this.http.put<IAddress>(`${this.baseUrl}account/address`, address);
+  updateUserAddress(address: IAddress[]): Observable<IAddress[]> {
+    return this.http.put<IAddress[]>(`${this.baseUrl}account/address`, address);
   }
 
 

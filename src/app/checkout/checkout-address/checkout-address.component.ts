@@ -15,11 +15,10 @@ export class CheckoutAddressComponent implements OnInit {
   ngOnInit(): void {
   }
   saveUserAddress(){
-    this.accSer.updateUserAddress(this.check.get('addressForm').value)
+    this.accSer.updateUserAddress([this.check.get('addressForm').value])
       .subscribe(()=>{
         this.toast.success('Address Saved')
       },error=>{
-        // console.log(this.check.get('addressForm').value);
         this.toast.error('An Error Occured');
         console.log(error);
       }
