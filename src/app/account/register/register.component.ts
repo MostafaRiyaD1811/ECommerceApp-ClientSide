@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { map, of, switchMap, timer } from 'rxjs';
 import { AccountModule } from '../account.module';
 import { AccountService } from '../account.service';
-import { CustomValidators } from '../CustomValidators';
+
 
 @Component({
   selector: 'app-register',
