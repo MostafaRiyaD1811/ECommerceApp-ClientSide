@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   title = 'Suez E-Commerce Shop';
   constructor(private toastr:ToastrService, private bnIdle: BnNgIdleService, private basketService: BasketService, private accountService: AccountService, private router: Router) {
-    this.bnIdle.startWatching(600).subscribe( (res) => {
+    this.bnIdle.startWatching(15).subscribe( (res) => {
       var token = localStorage.getItem('token');
         if (res && token !=null) {
           sessionStorage.removeItem('token');
