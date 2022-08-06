@@ -26,14 +26,22 @@ export class LoginComponent implements OnInit {
 
 
   }
-  onSubmit() {
 
+
+ 
+
+  onSubmit() {
+    localStorage.setItem('rem', this.loginForm.get('rememberMe').value);
     this.accountService.login(this.loginForm.value).subscribe({
       next: () => {
+
         this.router.navigateByUrl(this.returnUrl);
       } ,
       error: (error) => console.log(error),
     })
   }
 
+
 }
+
+

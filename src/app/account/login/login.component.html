@@ -6,14 +6,16 @@
       </div>
       <app-text-input formControlName="email" [label]="'Email'"></app-text-input>
       <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
-      <div class="checkbox mb-4 mt-4 ">
-          <input type="checkbox" value="remember-me" formControlName="rememberMe">
-          <span class="ml-1">Remember me</span>
+
+      <div class="form-check mb-4 mt-4">
+        <input  formControlName="rememberMe" type="checkbox" class="form-check-input" id="formcheck">
+        <label class="form-check-label" for="formcheck">Remember me</label>
       </div>
+
+
+
       <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 
     </form>
   </div>
-<div>
-  {{loginForm.value | json}}
-</div>
+

@@ -11,7 +11,7 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   @Input() type = 'text';
   @Input() label = 'string';
 
-  constructor(@Self() public controlDir: NgControl) { 
+  constructor(@Self() public controlDir: NgControl) {
     this.controlDir.valueAccessor = this;
   }
   ngOnInit(): void {
@@ -24,9 +24,12 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
     control.updateValueAndValidity();
   }
 
+  
   onChange(event) {}
 
   onTouched() {}
+
+
 
   writeValue(obj: any): void {
     this.input.nativeElement.value = obj || '';

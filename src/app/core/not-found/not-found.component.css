@@ -1,0 +1,11 @@
+.conatiner-fluid{
+  display: flex;
+  margin: 5rem;
+  justify-content: center;
+  align-items: center;
+
+  }
+  span, i{
+    padding: 10px;
+    color: rgb(255, 0, 0)(148, 40, 40);
+  }

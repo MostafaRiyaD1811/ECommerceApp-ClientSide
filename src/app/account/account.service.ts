@@ -23,9 +23,7 @@ this.CurrentUser$ =this.currentUserSource.asObservable();
 
 
   }
-  // getCurrentUserValue(){
-  //   return this.currentUserSource.value;
-  // }
+  
   loadCurrentUser(token: string) {
     if (token == null) {
       this.currentUserSource.next(null);
@@ -38,8 +36,7 @@ this.CurrentUser$ =this.currentUserSource.asObservable();
     return this.http.get(`${this.baseUrl}account`, { headers }).pipe(
       map((user: IUser) => {
         if (user) {
-          // localStorage.setItem('token', user.token.value);
-          // localStorage.setItem('exp', user.token.expireDate.toString());
+
           this.currentUserSource.next(user);
         }
       })
@@ -51,6 +48,7 @@ this.CurrentUser$ =this.currentUserSource.asObservable();
       map((user: IUser) => {
         if (user) {
           localStorage.setItem('token', user?.token?.value);
+          sessionStorage.setItem('token', user?.token?.value);
           localStorage.setItem('exp', user.token.expireDate.toString());
           this.currentUserSource.next(user);
         }
@@ -70,9 +68,12 @@ this.CurrentUser$ =this.currentUserSource.asObservable();
 
   logout():void {
     localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     localStorage.removeItem('exp');
+    localStorage.removeItem('rem');
+
     this.currentUserSource.next(null);
-   
+
   }
 
   checkEmailExists(email: string): Observable<boolean> {
