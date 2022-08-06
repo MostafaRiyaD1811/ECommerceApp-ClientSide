@@ -21,13 +21,13 @@ export class ErrorInterceptor implements HttpInterceptor {
           if(error.status === 400){
             if(error.error.errors){
               for (let err of error.error.errors ) {
-                // console.log(err,"here");
                 this.toastr.error(err)
               }
-              console.log(error.error.errors,"here");
+              console.log(error.error.errors);
             }else{
-              // console.log(error.error);
-              this.toastr.error(error.error)
+              for (let err of error.error ) {
+                this.toastr.error(err.description)
+              }
             }
           }
           if(error.status === 401){

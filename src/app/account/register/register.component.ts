@@ -30,26 +30,18 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators
         .pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')
       ]],
-
-
-      confirmPassword: ['', [Validators.required]],
     }
 
     );
   }
-
-
-
   onSubmit() {
-
     this.accountService.register(this.registerForm.value).subscribe({
       next: () => {
-
         console.log("register successed")
         this.router.navigate(['/account/login']);
       },
       error: (error) => {
-        for (let err of error) {
+        for (let err of error.error) {          
           this.errors.push(err.description)
         }
       },

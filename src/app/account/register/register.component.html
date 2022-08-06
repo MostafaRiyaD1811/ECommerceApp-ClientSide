@@ -11,11 +11,8 @@
             <app-text-input formControlName="email" [label]="'Email'"></app-text-input>
             <app-text-input formControlName="password" [label]="'Password'" [type]="'password'"></app-text-input>
             <!-- <app-text-input formControlName="confirmPassword" [label]="'Confirm Password'" [type]="'password' "></app-text-input> -->
-
-
-         
             <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
-            <ul class="text-danger" *ngIf="errors">
+            <ul class="text-danger m-5" *ngIf="errors">
                 <li *ngFor="let error of errors">
                     {{error}}
                 </li>
