@@ -19,12 +19,15 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError(error=>{
         if(error){
           if(error.status === 400){
-            if(error.error){
-              for (let err of error.error ) {
-                this.toastr.error(err.description)
+            if(error.error.errors){
+              for (let err of error.error.errors ) {
+                // console.log(err,"here");
+                this.toastr.error(err)
               }
+              console.log(error.error.errors,"here");
             }else{
-              this.toastr.error(error.error.message,error.error.statusCode)
+              // console.log(error.error);
+              this.toastr.error(error.error)
             }
           }
           if(error.status === 401){

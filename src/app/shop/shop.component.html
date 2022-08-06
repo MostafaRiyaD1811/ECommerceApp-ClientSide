@@ -49,7 +49,7 @@
 
 
             </div>
-            <div class=" d-flex justify-content-center" *ngIf="shopParams.totalCount > 0">
+            <div class=" d-flex justify-content-center mt-5" *ngIf="shopParams.totalCount > 0">
                 <pagination [boundaryLinks]="true" [totalItems]="this.shopParams.totalCount"
                     (pageChanged)="onPageChanged($event)" [itemsPerPage]="this.shopParams.size" previousText="&lsaquo;"
                     nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">

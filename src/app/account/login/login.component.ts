@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
  
 
   onSubmit() {
+    let values = this.loginForm.value
     localStorage.setItem('rem', this.loginForm.get('rememberMe').value);
     this.accountService.login(this.loginForm.value).subscribe({
       next: () => {

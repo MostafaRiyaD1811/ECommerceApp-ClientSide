@@ -14,10 +14,10 @@ export class AccountService implements OnInit{
   private currentUserSource: ReplaySubject<IUser>;
   CurrentUser$: Observable<IUser>;
 
-    constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     this.baseUrl = environment.apiurl;
     this.currentUserSource = new ReplaySubject<IUser>(1);
-this.CurrentUser$ =this.currentUserSource.asObservable();
+    this.CurrentUser$ =this.currentUserSource.asObservable();
   }
   ngOnInit(): void {
 
@@ -36,7 +36,6 @@ this.CurrentUser$ =this.currentUserSource.asObservable();
     return this.http.get(`${this.baseUrl}account`, { headers }).pipe(
       map((user: IUser) => {
         if (user) {
-
           this.currentUserSource.next(user);
         }
       })
