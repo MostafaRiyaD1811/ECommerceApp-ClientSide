@@ -17,14 +17,15 @@ export class AppComponent implements OnInit {
 
   title = 'Suez E-Commerce Shop';
   constructor(private toastr:ToastrService, private bnIdle: BnNgIdleService, private basketService: BasketService, private accountService: AccountService, private router: Router) {
-    this.bnIdle.startWatching(10).subscribe( (res) => {
-        if (res) {
+    this.bnIdle.startWatching(600).subscribe( (res) => {
+      var token = localStorage.getItem('token');
+        if (res && token !=null) {
           sessionStorage.removeItem('token');
           localStorage.removeItem('token');
           this.accountService.logout();
           this.router.navigate(['/account/login']);
           this.toastr.error('Your session has been ended due to inactive, please try to login again')
-          bnIdle.stopTimer();
+          bnIdle.resetTimer();
         }
 
         console.log("session expired");
@@ -47,7 +48,7 @@ export class AppComponent implements OnInit {
     if (localToken != null && rememberMe == 'true') {
       this.accountService.loadCurrentUser(localToken).subscribe({
         next: () => {
-          this.router.navigate(['/shop'])
+          // this.router.navigate(['/shop'])
         },
         error: error => {
           console.log(error);
@@ -58,7 +59,7 @@ export class AppComponent implements OnInit {
     if (sessionToken != null) {
       this.accountService.loadCurrentUser(localToken).subscribe({
         next: () => {
-          this.router.navigate(['/shop'])
+          // this.router.navigate(['/shop'])
         },
         error: error => {
           console.log(error);
