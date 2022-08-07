@@ -1,6 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgControlStatusGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Toast, ToastrService } from 'ngx-toastr';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   returnUrl:string;
 
-  constructor(private formBuilder: FormBuilder, private accountService:AccountService , private router:Router,private activatedRoute:ActivatedRoute) {}
+  constructor(private location:Location,private formBuilder: FormBuilder, private accountService:AccountService , private router:Router,private activatedRoute:ActivatedRoute,private toast:ToastrService) {}
 
   ngOnInit(): void {
     this.returnUrl=this.activatedRoute.snapshot.queryParams['returnUrl'] || '/shop';
@@ -35,10 +37,10 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('rem', this.loginForm.get('rememberMe').value);
     this.accountService.login(this.loginForm.value).subscribe({
       next: () => {
-
+      // this.location.back();
         this.router.navigateByUrl(this.returnUrl);
       } ,
-      error: (error) => console.log(error),
+      error: (error) => console.log(error)
     })
   }
 

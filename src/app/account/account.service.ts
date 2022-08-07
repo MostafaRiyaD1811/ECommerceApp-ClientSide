@@ -70,7 +70,7 @@ export class AccountService implements OnInit{
     sessionStorage.removeItem('token');
     localStorage.removeItem('exp');
     localStorage.removeItem('rem');
-
+    localStorage.removeItem('basket_id');
     this.currentUserSource.next(null);
 
   }
